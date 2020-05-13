@@ -50,13 +50,14 @@ class linear_regression_estimator(BaseEstimator):
         '''
         X = self._add_intercept(X)
         print(X.shape)
-        print(X.head())
+        print(X[0])
         # inv(X'X) X' Y = B
         self.betas = np.linalg.inv(X.transpose().dot(X)).dot(X.transpose()).dot(y)
 
     def predict(self, _X):
         b0 = self.betas[0]
         coeffs = self.betas[1:]
+        #print(b0, coeffs)
         prediction = b0
         # and now let's use all the coefficients of our equation
         for x_i, b_i in zip(_X, coeffs):
